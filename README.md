@@ -33,19 +33,70 @@ This project provisions a secure, multi-AZ AWS architecture with remote state ma
 - --
 
 ## 🗂 Project Structure
+## 📁 Project Structure
+
+```text
+terraform-project/
+├── main.tf
 ├── providers.tf
 ├── backend.tf
-├── vars.tf
-├── vpc.tf
-├── secgrp.tf
-├── bastion-host.tf
-├── backend-services.tf
-├── beanapp.tf
-├── bean-env.tf
-├── keypairs.tf
+├── variables.tf
 ├── outputs.tf
-├── db-deploy.tmpl
-
+├── terraform.tfvars
+├── versions.tf
+│
+├── modules/
+│   ├── vpc/
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   │   └── outputs.tf
+│   │
+│   ├── security-group/
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   │   └── outputs.tf
+│   │
+│   ├── bastion/
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   │   └── outputs.tf
+│   │
+│   ├── backend-services/
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   │   └── outputs.tf
+│   │
+│   ├── beanstalk-app/
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   │   └── outputs.tf
+│   │
+│   ├── keypairs/
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   │   └── outputs.tf
+│   │
+│   └── database/
+│       ├── main.tf
+│       ├── db-deploy.tmpl
+│       ├── variables.tf
+│       └── outputs.tf
+│
+├── env/
+│   ├── dev/
+│   │   └── terraform.tfvars
+│   ├── stage/
+│   │   └── terraform.tfvars
+│   └── prod/
+│       └── terraform.tfvars
+│
+├── scripts/
+│   ├── deploy.sh
+│   └── destroy.sh
+│
+├── .gitignore
+└── README.md
+```
 ## ⚙️ Deployment Steps
 
 ### 1️⃣ Initialize Terraform
